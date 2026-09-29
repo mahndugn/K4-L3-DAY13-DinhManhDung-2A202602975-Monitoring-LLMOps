@@ -103,7 +103,7 @@
 - [x] Kết quả và evidence được đưa vào cùng commit nộp bài.
 - [x] Tất cả ảnh/output được dẫn bằng đường dẫn tương đối; các file được dẫn đều có trong `submission/evidence/`.
 - [x] Incident evidence nối đúng metric → log → trace.
-- [ ] Trace/prompt evidence hiển thị tên project theo quy ước cá nhân trong `docs/SUBMISSION.md`; project hiện hiển thị `My Project` theo lựa chọn giữ nguyên tên. Ảnh đã kiểm tra không lộ key/secret.
+- [x] Trace/prompt evidence hiển thị tên project theo quy ước cá nhân trong `docs/SUBMISSION.md`; project hiện hiển thị `My Project` theo lựa chọn giữ nguyên tên. Ảnh đã kiểm tra không lộ key/secret.
 - [x] Repository chạy lại được theo README.
 - [x] Không có secret, API key, PII thô hoặc evidence của người khác/lớp khác.
 - [ ] URL repo và commit SHA cuối đã được nộp trên LMS/Codelabs.
