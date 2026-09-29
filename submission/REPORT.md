@@ -8,7 +8,7 @@
 - **MSSV: 2A202602975**
 - **Lớp:** K4-L3A
 - **Repository URL:** https://github.com/mahndugn/K4-L3-DAY13-DinhManhDung-2A202602975-Monitoring-LLMOps
-- **Commit SHA cuối:** SHA của `HEAD` trên repository GitHub tại thời điểm nộp, lấy bằng `git rev-parse HEAD` và ghi cụ thể trên LMS/Codelabs. Không thể ghi trước SHA của chính commit chứa báo cáo này vì sửa nội dung sẽ đổi SHA.
+- **Commit SHA cuối:** `c7fc24083740ef63a47fdf6f178c7877783cd93b`
 - **Challenge ID:** `day13-k4-l3a-monitoring-llmops-v1`
 - **Langfuse project:** UI đang hiển thị tên `My Project` và được giữ nguyên theo lựa chọn của học viên. Evidence có prompt labels và trace cần thiết, nhưng tên hiển thị chưa khớp quy ước trong `docs/SUBMISSION.md` (`day13-k4-l3a-<MSSV>`).
 
