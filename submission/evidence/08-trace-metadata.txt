@@ -1,0 +1,14 @@
+Verified from Langfuse Observations API v2; raw prompt and output content omitted.
+
+Baseline v1
+  correlation_id=req-1ed68d8d
+  trace_id=71955fff7beff281a4f3a0e2f87a5c2b
+  prompt=day13-chat, label=production, version=1, source=langfuse
+
+Candidate v2
+  correlation_id=req-336b8daa
+  trace_id=8bf8357ed26257d7d854cc344ff23c58
+  prompt=day13-chat, label=candidate, version=2, source=langfuse
+  generation model=claude-sonnet-4-5
+  usage input=52, output=100, total=152
+  cost input=$0.000156, output=$0.001500, total=$0.001656

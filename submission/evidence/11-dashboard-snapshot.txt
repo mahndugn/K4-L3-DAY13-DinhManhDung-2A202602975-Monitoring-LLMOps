@@ -1,0 +1,12 @@
+Local dashboard snapshot, rolling 60-minute window before CP3 workload:
+  panels: 6/6
+  log records: 131
+  request latency P50/P95/P99: 152.0 / 686.6 / 3152.9 ms
+  TTFT P95: 50.0 ms
+  average traffic: 1.03 requests/min
+  error rate: 0.0%
+  retrieval success: 100.0%
+  total cost: $0.126399
+  tokens: 2468 input, 7933 output
+  quality mean: 0.88
+Dashboard screenshot: evidence/11-dashboard-overview.png

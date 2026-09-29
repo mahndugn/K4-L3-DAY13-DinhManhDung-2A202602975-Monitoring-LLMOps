@@ -1,0 +1,5 @@
+correlation_id=req-07d3c97c
+trace_id=f0f856783139d9b0658c779db34b812f
+name=fake-llm-generate type=GENERATION parent=2de56d9d8ff2991f latency_ms=152.0 model=claude-sonnet-4-5 prompt=day13-chat prompt_version=2 usage={'input': 53, 'output': 101, 'total': 154} cost={'input': 0.000159, 'output': 0.001515, 'total': 0.001674} metadata={'correlation_id': 'req-07d3c97c'}
+name=knowledge-retrieval type=RETRIEVER parent=2de56d9d8ff2991f latency_ms=2501.0 model=- prompt=- prompt_version=- usage=- cost=- metadata={'correlation_id': 'req-07d3c97c'}
+name=lab-agent-run type=AGENT parent=(root) latency_ms=3171.0 model=- prompt=- prompt_version=- usage=- cost=- metadata={'correlation_id': 'req-07d3c97c', 'prompt_name': 'day13-chat', 'prompt_label': 'production', 'prompt_version': 2, 'prompt_source': 'langfuse', 'doc_count': 1}

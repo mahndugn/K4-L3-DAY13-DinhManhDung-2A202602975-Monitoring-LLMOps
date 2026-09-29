@@ -2,7 +2,10 @@ from __future__ import annotations
 
 import os
 import time
+from contextlib import nullcontext
 from dataclasses import dataclass
+
+from structlog.contextvars import bind_contextvars
 
 from . import metrics
 from .mock_llm import FakeLLM
@@ -38,6 +41,10 @@ class LabAgent:
         correlation_id: str,
     ) -> AgentResult:
         langfuse_client = get_langfuse_client()
+        trace_id_getter = getattr(langfuse_client, "get_current_trace_id", None)
+        trace_id = trace_id_getter() if tracing_enabled() and callable(trace_id_getter) else None
+        if trace_id:
+            bind_contextvars(trace_id=trace_id)
         with propagate_attributes(
             user_id=hash_user_id(user_id),
             session_id=session_id,
@@ -51,7 +58,21 @@ class LabAgent:
             },
         ):
             started = time.perf_counter()
-            docs = retrieve(message)
+            with self._observation(
+                langfuse_client,
+                as_type="retriever",
+                name="knowledge-retrieval",
+                input={"query_preview": summarize_text(message)},
+            ) as retrieval_observation:
+                docs = retrieve(message)
+                if retrieval_observation is not None:
+                    retrieval_observation.update(
+                        output={
+                            "document_count": len(docs),
+                            "documents": [summarize_text(doc) for doc in docs],
+                        }
+                    )
+
             prompt = resolve_prompt(
                 langfuse_client,
                 feature=feature,
@@ -71,10 +92,35 @@ class LabAgent:
                 },
                 version=prompt.version,
             )
-            # TODO (CP2): instrument retrieve() and FakeLLM.generate() as child
-            # observations. The nested generation must receive prompt, usage and cost.
             with propagate_attributes(prompt=prompt.managed_prompt):
-                response = self.llm.generate(prompt.text)
+                with self._observation(
+                    langfuse_client,
+                    as_type="generation",
+                    name="fake-llm-generate",
+                    model=self.model,
+                    input={
+                        "prompt_name": prompt.name,
+                        "prompt_version": prompt.version,
+                        "feature": feature,
+                        "retrieved_doc_count": len(docs),
+                    },
+                ) as generation_observation:
+                    response = self.llm.generate(prompt.text)
+                    input_cost = (response.usage.input_tokens / 1_000_000) * 3
+                    output_cost = (response.usage.output_tokens / 1_000_000) * 15
+                    if generation_observation is not None:
+                        generation_observation.update(
+                            output=summarize_text(response.text),
+                            usage_details={
+                                "input": response.usage.input_tokens,
+                                "output": response.usage.output_tokens,
+                            },
+                            cost_details={
+                                "input": input_cost,
+                                "output": output_cost,
+                            },
+                            metadata={"ttft_ms": response.ttft_ms},
+                        )
             quality_score = self._heuristic_quality(message, response.text, docs)
             latency_ms = int((time.perf_counter() - started) * 1000)
             cost_usd = self._estimate_cost(response.usage.input_tokens, response.usage.output_tokens)
@@ -97,6 +143,13 @@ class LabAgent:
             cost_usd=cost_usd,
             quality_score=quality_score,
         )
+
+    @staticmethod
+    def _observation(client, **kwargs):
+        start_observation = getattr(client, "start_as_current_observation", None)
+        if tracing_enabled() and callable(start_observation):
+            return start_observation(**kwargs)
+        return nullcontext(None)
 
     def _estimate_cost(self, tokens_in: int, tokens_out: int) -> float:
         input_cost = (tokens_in / 1_000_000) * 3

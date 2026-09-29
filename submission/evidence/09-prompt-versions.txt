@@ -1,0 +1,11 @@
+Langfuse prompt inventory for day13-chat:
+day13-chat v1: labels=baseline,production
+day13-chat v2: labels=candidate,latest
+
+After promotion:
+day13-chat v1: labels=baseline
+day13-chat v2: labels=candidate,latest,production
+
+After rollback:
+day13-chat v1: labels=baseline,production
+day13-chat v2: labels=candidate,latest

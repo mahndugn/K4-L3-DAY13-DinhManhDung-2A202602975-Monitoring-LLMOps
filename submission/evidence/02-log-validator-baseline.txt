@@ -1,0 +1,7 @@
+Command: python scripts/validate_logs.py
+Total log records analyzed: 41
+Records with missing required fields: 40
+Records with missing enrichment (context): 40
+Unique correlation IDs found: 0
+Potential PII leaks detected: 0
+Estimated Score: 30/100

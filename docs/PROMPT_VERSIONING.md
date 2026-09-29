@@ -21,6 +21,24 @@ LANGFUSE_PROMPT_LABEL=production
 
 Nếu Langfuse không khả dụng, app dùng template local và trace metadata ghi `prompt_source=local` hoặc `local-fallback` thay vì giả vờ đã lấy được prompt managed.
 
+## Tạo và vận hành prompt versions
+
+Có thể thao tác bằng UI Langfuse hoặc dùng helper trong repo. Helper đọc credentials
+từ `.env` nhưng không in key ra terminal:
+
+```powershell
+python scripts/manage_prompts.py inspect
+python scripts/manage_prompts.py initialize
+python scripts/manage_prompts.py promote-v2
+python scripts/manage_prompts.py rollback-v1
+```
+
+`initialize` chỉ tạo prompt khi tên `day13-chat` chưa có trong project; nếu đã có
+version, script dừng để tránh tạo trùng. Script khởi tạo v1 với `baseline` và
+`production`, rồi v2 với `candidate`. Sau khi chạy cùng workload cho hai label,
+`promote-v2` chuyển `production` sang v2; `rollback-v1` đưa `production` về v1.
+Chạy `inspect` sau mỗi thao tác để kiểm tra label thực tế.
+
 ## Việc cần làm
 
 1. Tạo version 1, gắn labels `baseline` và `production`.

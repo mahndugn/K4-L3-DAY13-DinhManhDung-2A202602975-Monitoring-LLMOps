@@ -1,0 +1,12 @@
+Challenge request log correlation (PII and message payload omitted)
+UTC | event | correlation_id | trace_id | latency_ms
+2026-09-29T09:31:57.190860Z | request_received | req-07d3c97c |  |
+2026-09-29T09:32:00.779540Z | response_sent | req-07d3c97c | f0f856783139d9b0658c779db34b812f | 3170
+2026-09-29T09:32:00.782651Z | request_received | req-5d6d7088 |  |
+2026-09-29T09:32:03.436623Z | response_sent | req-5d6d7088 | 6f1548669a398aa2c147a3715359e0b0 | 2652
+2026-09-29T09:32:03.438482Z | request_received | req-d3d74e17 |  |
+2026-09-29T09:32:06.091634Z | response_sent | req-d3d74e17 | c51e600e6270dee4158ff87bd7cefffa | 2652
+2026-09-29T09:32:06.092942Z | request_received | req-33777784 |  |
+2026-09-29T09:32:08.745723Z | response_sent | req-33777784 | 851bada219bae8d4ce319df8a4d6df86 | 2651
+2026-09-29T09:32:08.747636Z | request_received | req-8a2b637f |  |
+2026-09-29T09:32:11.401398Z | response_sent | req-8a2b637f | 95d407364bbc4351a59918041b0dfb00 | 2652

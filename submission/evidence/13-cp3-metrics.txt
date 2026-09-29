@@ -1,0 +1,15 @@
+Official challenge: day13-k4-l3a-monitoring-llmops-v1 Cohort: K4 | Incident: rag_slow | Affected feature: monitoring Challenge latency threshold: 2000 ms Challenge request window UTC: 2026-09-29T09:31:57.190860Z -> 2026-09-29T09:32:11.401398Z API health: ok=True, tracing_enabled=True Incident state during capture: {"rag_slow":true,"tool_fail":false,"cost_spike":false} API /metrics snapshot after challenge workload (5 requests): {
+    "traffic":  5,
+    "latency_p50":  2652.0,
+    "latency_p95":  3170.0,
+    "latency_p99":  3170.0,
+    "ttft_p95":  50.0,
+    "avg_cost_usd":  0.0017,
+    "total_cost_usd":  0.0087,
+    "tokens_in_total":  270,
+    "tokens_out_total":  528,
+    "error_breakdown":  {
+
+                        },
+    "quality_avg":  0.84
+}

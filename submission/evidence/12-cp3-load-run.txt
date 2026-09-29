@@ -1,0 +1,10 @@
+Official challenge run transcript
+Challenge: day13-k4-l3a-monitoring-llmops-v1 | Cohort: K4
+Incident injected: rag_slow
+Command: python scripts/load_test.py --challenge --concurrency 5
+[200] req-07d3c97c | monitoring | 11561.5ms
+[200] req-5d6d7088 | monitoring | 14220.1ms
+[200] req-d3d74e17 | monitoring | 14219.6ms
+[200] req-33777784 | monitoring | 14219.1ms
+[200] req-8a2b637f | monitoring | 14221.2ms
+Result: 5/5 HTTP 200.

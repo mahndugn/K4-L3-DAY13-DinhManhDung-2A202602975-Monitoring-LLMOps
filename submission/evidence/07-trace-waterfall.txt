@@ -1,0 +1,12 @@
+Verified from Langfuse Observations API v2.
+
+correlation_id=req-336b8daa
+trace_id=8bf8357ed26257d7d854cc344ff23c58
+
+lab-agent-run [AGENT] (root)
+├── knowledge-retrieval [RETRIEVER]
+└── fake-llm-generate [GENERATION]
+    model=claude-sonnet-4-5
+    prompt=day13-chat v2
+    usage: input=52, output=100, total=152
+    cost: input=$0.000156, output=$0.001500, total=$0.001656

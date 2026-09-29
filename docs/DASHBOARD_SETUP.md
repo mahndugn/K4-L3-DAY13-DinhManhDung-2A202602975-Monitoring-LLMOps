@@ -29,6 +29,18 @@ Giữ time range mặc định 60 phút, refresh 30 giây và hiển thị thres
 python scripts/validate_dashboard.py
 ```
 
+Repo có dashboard runtime local đọc trực tiếp `data/logs.jsonl`, hiển thị sáu panel
+theo contract và tự làm mới mỗi 30 giây. Chạy trong một terminal riêng:
+
+```powershell
+python scripts/dashboard.py
+```
+
+Mở `http://127.0.0.1:8050` để xem dashboard. Giữ API chạy và phát workload trước
+để có dữ liệu. Dashboard chỉ hiển thị số liệu tổng hợp, không đưa nội dung request
+hoặc PII vào trình duyệt. Khi chụp evidence, chọn time range 60 phút và chụp đủ sáu
+panel cùng threshold; có thể phóng nhỏ trình duyệt hoặc chụp hai ảnh nếu cần.
+
 Validator kiểm tra cấu trúc contract; nó không thể chứng minh biểu đồ trong ảnh dùng đúng dữ liệu. Evidence runtime vẫn bắt buộc.
 
 ## Cách kiểm tra runtime

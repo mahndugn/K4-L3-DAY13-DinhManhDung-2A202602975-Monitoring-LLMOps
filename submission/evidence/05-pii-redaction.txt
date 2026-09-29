@@ -1,0 +1,9 @@
+Synthetic samples were sent through the chat API. The following are the resulting
+sanitized request previews from data/logs.jsonl:
+
+req-e43d584c: What is your refund policy? My email is [REDACTED_EMAIL]
+req-b2cfb720: Here is my phone [REDACTED_PHONE_VN], what should be logged?
+req-3ab46d80: What is the policy for PII and credit card [REDACTED_CREDIT_CARD]?
+req-1234abcd: Test email [REDACTED_EMAIL] and CCCD [REDACTED_CCCD]
+
+The log validator scanned 131 records and detected 0 potential PII leaks.

@@ -1,0 +1,2 @@
+day13-chat v1: labels=baseline,production
+day13-chat v2: labels=candidate,latest
